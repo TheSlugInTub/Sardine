@@ -1,0 +1,1 @@
+/usr/sbin/c++ CMakeFiles/osc.dir/src/main.cpp.o CMakeFiles/osc.dir/src/lexer.cpp.o CMakeFiles/osc.dir/src/parser.cpp.o CMakeFiles/osc.dir/src/assembler.cpp.o -o osc

@@ -1,0 +1,3 @@
+/home/slugarius/Sardine/bld/CMakeFiles/osc.dir
+/home/slugarius/Sardine/bld/CMakeFiles/edit_cache.dir
+/home/slugarius/Sardine/bld/CMakeFiles/rebuild_cache.dir
