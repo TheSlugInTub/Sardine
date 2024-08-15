@@ -9,6 +9,11 @@ enum TokenType
     exitToken,
     intLit,
     semi,
+    openParen,
+    closeParen,
+    ident,
+    let,
+    eq,
     unknown
 };
 

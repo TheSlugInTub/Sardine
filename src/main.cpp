@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 {
 	if (argc < 2) 
     {
-        std::cout << "SARDINE: No files provided.\n";
+        std::cout << "OSC: No files provided.\n";
         return 1; 
     }
 
@@ -20,7 +20,7 @@ int main(int argc, char const *argv[])
 
     // Check if the file was opened successfully
     if (!file.is_open()) {
-        std::cerr << "ERROR: Could not open file " << filePath << std::endl;
+        std::cerr << "OSC:ERROR: Could not open file " << filePath << std::endl;
         return 1;
     }
 
@@ -43,12 +43,20 @@ int main(int argc, char const *argv[])
     }
 
     Parser parser(std::move(tokens));
-    std::optional<Node::Exit> tree = parser.parse();
+    std::optional<Node::Prog> prog = parser.parseProg();
 
-    Assembler assem(tree.value());
+    if  (!prog.has_value())
+    {
+        std::cerr << "OSC:ERROR: Parsing was unsuccessful, invalid program node."<< std::endl;
+        return 1;
+    }
+
+    std::cout << "OSC:INFO: Parsing succesful.\n";
+
+    Assembler assem(prog.value());
 
     std::fstream outfile("out.asm", std::ios::out);
-    outfile << assem.assemble();
+    outfile << assem.assembleProg();
     outfile.close();
 
     system("nasm -felf64 out.asm");    

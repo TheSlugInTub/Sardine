@@ -16,10 +16,22 @@ std::vector<Token> Lexer::Lex()
         {
             // Skip whitespace
             ++index;
-            continue;
         }
-
-        if (currentChar == ';')
+        else if (currentChar == '(')
+        {
+            tokens.push_back({ "(", openParen });
+            ++index;
+        }
+        else if (currentChar == ')')
+        {
+            tokens.push_back({ ")", closeParen });
+            ++index;
+        }else if (currentChar == '=')
+        {
+            tokens.push_back({ "=", eq });
+            ++index;
+        }
+        else if (currentChar == ';')
         {
             tokens.push_back({ ";", semi });
             ++index;
@@ -44,10 +56,13 @@ std::vector<Token> Lexer::Lex()
             if (word == "exit")
             {
                 tokens.push_back({ word, exitToken });
+            }else if (word == "let")
+            {
+                tokens.push_back( {.type = TokenType::let} );
             }
             else
             {
-                tokens.push_back({ word, unknown });
+                tokens.push_back({ .value = word, .type = TokenType::ident });
             }
         }
         else
