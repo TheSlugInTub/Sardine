@@ -17,6 +17,15 @@ std::vector<Token> Lexer::Lex()
             // Skip whitespace
             ++index;
         }
+        else if (currentChar == '/' && index + 1 < source.size() && source[index + 1] == '/')
+        {
+            // Skip single-line comment (//)
+            index += 2; // Skip the //
+            while (index < source.size() && source[index] != '\n')
+            {
+                ++index; // Skip until end of line
+            }
+        }
         else if (currentChar == '(')
         {
             tokens.push_back({ "(", openParen });
