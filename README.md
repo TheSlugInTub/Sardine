@@ -1,8 +1,6 @@
 # Sardine 
 Sardine is a programming language and this is a compiler for Sardine, it is called OSC, or the Openwell Sardine Compiler.
 
-Sardine is part of the Openwell project which you can find information about here: https://openwell.uk.to
-
 This compiler is written in C++ and the project uses Cmake as its build system.
 It currently only supports the return keyword, integer literals, integer variables with the "let" keyword,  and semicolons. But the Sardine programming language will be expanded in the future.
 
